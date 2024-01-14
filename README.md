@@ -18,7 +18,7 @@ Here's a list of projects that I have completed so far:
 
 ## Ongoing Projects
 
-- **PipeX**: A project that teaches basic UNIX operations and focuses on three main concepts: pipelines, child processes, and execution of commands.
+- **pipex**: A project that teaches basic UNIX operations and focuses on three main concepts: pipelines, child processes, and execution of commands.
 
 ## Contact
 
