@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 23:52:21 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/17 18:50:50 by hlibine          ###   ########.fr       */
+/*   Created: 2023/10/12 10:37:15 by hlibine           #+#    #+#             */
+/*   Updated: 2023/10/25 13:33:52 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# include <fcntl.h>
-# include <unistd.h>
-# include "ft_printf/ft_printf.h"
-# include "Libft/libft.h"
-# include <stdio.h>
+#include "libft.h"
 
-void	px_error(char *in);
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+	size_t	len;
 
-#endif
+	len = count * size;
+	ptr = malloc(len);
+	if (ptr == NULL)
+		return (NULL);
+	ft_memset(ptr, 0, len);
+	return (ptr);
+}

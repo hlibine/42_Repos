@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 23:52:21 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/17 18:50:50 by hlibine          ###   ########.fr       */
+/*   Created: 2023/10/30 17:11:10 by hlibine           #+#    #+#             */
+/*   Updated: 2024/01/17 18:45:42 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# include <fcntl.h>
-# include <unistd.h>
-# include "ft_printf/ft_printf.h"
-# include "Libft/libft.h"
-# include <stdio.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include "../Libft/libft.h"
 
-void	px_error(char *in);
+void	ft_printf_putnbr(int n, char *str, int *p);
+void	ft_printf_ptohex(void *p, int *o);
+void	ft_printf_putchar(char c, int *p);
+void	ft_printf_putstr(char *str, int *p);
+void	ft_printf_putnbrun(unsigned long int n, char *str, int *p);
+int		ft_printf(const char *format, ...);
 
 #endif
