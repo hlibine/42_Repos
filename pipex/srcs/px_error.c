@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:20:09 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/17 18:49:22 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:07:02 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	px_error(char *in)
 {
-	ft_printf("Error: %s", in);
+	ft_printf("Error: %s\n", in);
 	exit(1);
 }

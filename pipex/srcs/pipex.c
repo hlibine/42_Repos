@@ -6,23 +6,36 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/17 20:08:17 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/18 15:44:18 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	parent_ps(int fd, char* cmd)
+void	parent_ps(int f2, char* cmd)
 {
-	wait(NULL);
+	int	status;
+
+	waitpid(-1, &status, 0);
+	dup2(f2, ...);
+	dup2(end[0], ...);
+	close[1];
+	close(f2)
+	execv();
+	exit(EXIT_FAILURE)
 }
 
-void	child_ps(int fd, char* cmd)
+void	child_ps(int f1, char* cmd)
 {
-	
+	dup2(f1, STDIN_FILENO);
+	dup2(end[1], STDOUT_FILENO);
+	close(end[0]);
+	close(f1);
+	execve();
+	exit(EXIT_FAILURE);
 }
 
-void	px_pipex(int f1, int f2)
+void	pipex(int f1, int f2, char **argv, char** envp)
 {
 	int		end[2];
 	pid_t	parent;
@@ -37,7 +50,7 @@ void	px_pipex(int f1, int f2)
 		parent_ps(f2, cmd2);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	int	*infile;
 	int	*outfile;
@@ -46,5 +59,6 @@ int	main(int argc, char **argv)
 		px_error("not enough / too many arguments");
 	infile = open(argv[1], O_RDONLY);
 	outfile = open(argv[4], O_WRONLY);
-	px_pipex(infile, outfile);
+	pipex(infile, outfile, argv, envp);
+	return (0);
 }
