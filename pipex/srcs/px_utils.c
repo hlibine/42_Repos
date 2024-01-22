@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   px_error.c                                         :+:      :+:    :+:   */
+/*   px_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:20:09 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/19 14:09:01 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/22 15:22:05 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,27 @@
 
 void	px_error(char *in)
 {
-	write (1, "ERROR: ", 7);
+	write (2, "ERROR: ", 7);
 	while (in)
 	{
-		write(1, *in, 1);
+		write(2, *in, 1);
 		in++;
 	}
-	write (1, "\n", 1);
+	write (2, "\n", 1);
 	exit(-1);
+}
+
+void	px_free(char **in)
+{
+	while(*in)
+	{
+		free(*in);
+		in++;
+	}
+	free(in);
+}
+
+char	*px_getpath(char *cmd, char **envp)
+{
+	
 }
