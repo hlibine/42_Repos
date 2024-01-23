@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/22 16:18:07 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:10:55 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	excec(const char *cmd, char **envp)
 	if (!s_cmd)
 		exit(EXIT_FAILURE);
 	path = px_getpath(s_cmd[0], envp);
-	if (execve(path, s_cmd[0], envp) == -1)
+	if (execve(path, &s_cmd[0], envp) == -1)
 	{
 		ft_putstr_fd("pipex error: command not found: ", 2);
 		ft_putendl_fd(s_cmd[0], 2);
@@ -30,18 +30,18 @@ void	excec(const char *cmd, char **envp)
 	}
 }
 
-void	child_ps(int e_fd, char **argv, char **envp)
+void	child_ps(int *e_fd, char **argv, char **envp)
 {
 	int	fd;
 
-	fd = open(av[1], 0);
+	fd = open(argv[1], 0);
 	dup2(fd, STDIN_FILENO);
 	close(e_fd[0]);
 	dup2(e_fd[1], STDOUT_FILENO);
-	exex(argv[2], envp);
+	excec(argv[2], envp);
 }
 
-void	parent_ps(int e_fd, char **argv, char **envp)
+void	parent_ps(int *e_fd, char **argv, char **envp)
 {
 	int	fd;
 
