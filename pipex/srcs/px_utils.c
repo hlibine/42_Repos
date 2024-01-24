@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:20:09 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/23 16:27:46 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/24 11:22:01 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	px_error(char *in)
 
 void	px_free(char **in)
 {
-	while(*in)
-	{
-		free(*in);
-		in++;
-	}
+	int	i;
+
+	i = -1;
+	while(in[++i])
+		free(in[i]);
 	free(in);
 }
 

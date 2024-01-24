@@ -6,7 +6,7 @@
 #    By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/23 16:16:12 by hlibine           #+#    #+#              #
-#    Updated: 2024/01/23 16:22:41 by hlibine          ###   ########.fr        #
+#    Updated: 2024/01/24 10:41:49 by hlibine          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ all: ${NAME}
 
 clean:
 		@echo "$(ORANGE)Cleaning up$(RESET)"
-		@${RM} ${OBJS_PX}
+		@${RM} ${OBJS_PX} ${OBJS}
 		@cd $(LIBFT) && $(MAKE) -s clean
 		@echo "$(GREEN)Clean up successful$(RESET)"
 
