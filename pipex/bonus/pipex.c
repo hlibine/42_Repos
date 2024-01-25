@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/24 15:15:31 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/25 15:50:08 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	excec(const char *cmd, char **envp)
 	}
 }
 
-void	child_ps(int *e_fd, char **argv, char **envp, int argc, int pos)
+void	child_ps(int *e_fd, char **argv, char **envp, int *i)
 {
 	int	fd;
 
@@ -41,7 +41,7 @@ void	child_ps(int *e_fd, char **argv, char **envp, int argc, int pos)
 	excec(argv[pos], envp);
 }
 
-void	parent_ps(int *e_fd, char **argv, char **envp, int argc, int pos)
+void	parent_ps(int *e_fd, char **argv, char **envp, int *i)
 {
 	int	fd;
 
@@ -52,30 +52,37 @@ void	parent_ps(int *e_fd, char **argv, char **envp, int argc, int pos)
 	excec(argv[pos], envp);
 }
 
+void	pipewrk()
+{
+	pid_t	pid;
+	int		fd[2];
+
+	if(pipe(fd) == -1)
+		px_error("pipe error");
+	
+}
+
 int	main(int argc, char **argv, char **envp)
 {
-	int		fd[2];
-	pid_t	pid;
-	int		cmds;
-	int		i;
+	int	i;
+	int	fdi;
+	int	fdo;
 
-	i = 2;
-	if (argc > 5)
+	if (argc < 5)
 		px_error("not enough arguments");
-	cmds = argc;
-	if (pipe(fd) == -1)
-		px_error("opening the pipe");
-	while (i < cmds)
+	if (ft_strncmp(argv[1], "here_doc", 8))
 	{
-		pid = fork();
-		if (pid == -1)
-			px_error("opening the fork");
-		if (!pid)
-			child_ps(fd, argv, envp, argc, i);
-		waitpid(pid, NULL, 0);
-		++i;
-		parent_ps(fd, argv, envp, argc, i);
-		++i;
+		prinf("YIPPIE");
 	}
+	else
+	{
+		i = 2;
+		fdi = open(argv[1], 0);
+		fdo = open(argv[argc - 1]);
+		dup2(fdi, STDIN_FILENO);
+	}
+	while (i < argc - 2)
+		pipewrk(argv[i++], envp);
+	parent_ps(fd, argv, envp, argc, i);
 	return (0);
 }
