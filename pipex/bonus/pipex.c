@@ -30,36 +30,27 @@ void	excec(const char *cmd, char **envp)
 	}
 }
 
-void	child_ps(int *e_fd, char **argv, char **envp, int *i)
-{
-	int	fd;
-
-	fd = open(argv[1], 0);
-	dup2(fd, STDIN_FILENO);
-	close(e_fd[0]);
-	dup2(e_fd[1], STDOUT_FILENO);
-	excec(argv[pos], envp);
-}
-
-void	parent_ps(int *e_fd, char **argv, char **envp, int *i)
-{
-	int	fd;
-
-	fd = open(argv[4], 1);
-	dup2(fd, STDOUT_FILENO);
-	close(e_fd[1]);
-	dup2(e_fd[0], STDIN_FILENO);
-	excec(argv[pos], envp);
-}
-
-void	pipewrk()
+void	pipewrk(char *cmd, char **envp)
 {
 	pid_t	pid;
 	int		fd[2];
 
 	if(pipe(fd) == -1)
 		px_error("pipe error");
-	
+	pid = fork();
+	if (pid == -1)
+		px_error("fork error");
+	if (pid == 0)
+	{
+		close(fd[0]);
+		dup2(fd[1], STDOUT_FILENO);
+		excec(cmd, envp);
+	}
+	else
+	{
+		close(fd[1]);
+		dup2(STDIN_FILENO, fd[0]);
+	}
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -72,17 +63,18 @@ int	main(int argc, char **argv, char **envp)
 		px_error("not enough arguments");
 	if (ft_strncmp(argv[1], "here_doc", 8))
 	{
+		i = 3;
 		prinf("YIPPIE");
 	}
 	else
 	{
 		i = 2;
 		fdi = open(argv[1], 0);
-		fdo = open(argv[argc - 1]);
+		fdo = open(argv[argc - 1], 1);
 		dup2(fdi, STDIN_FILENO);
 	}
-	while (i < argc - 2)
+	while (i < argc - 3)
 		pipewrk(argv[i++], envp);
-	parent_ps(fd, argv, envp, argc, i);
+	excec(argv[argc - 2], envp);
 	return (0);
 }
