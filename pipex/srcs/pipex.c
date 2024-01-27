@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/23 16:10:55 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/27 14:38:59 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void	child_ps(int *e_fd, char **argv, char **envp)
 {
 	int	fd;
 
-	fd = open(argv[1], 0);
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		px_error("problem opening file");
 	dup2(fd, STDIN_FILENO);
 	close(e_fd[0]);
 	dup2(e_fd[1], STDOUT_FILENO);
@@ -45,7 +47,9 @@ void	parent_ps(int *e_fd, char **argv, char **envp)
 {
 	int	fd;
 
-	fd = open(argv[4], 1);
+	fd = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	if (fd < 0)
+		px_error("problem reading file");
 	dup2(fd, STDOUT_FILENO);
 	close(e_fd[1]);
 	dup2(e_fd[0], STDIN_FILENO);
@@ -68,5 +72,4 @@ int	main(int argc, char **argv, char **envp)
 		child_ps(fd, argv, envp);
 	waitpid(pid, NULL, 0);
 	parent_ps(fd, argv, envp);
-	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/25 15:50:08 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/27 13:13:16 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
+#include "get_next_line/get_next_line.h"
 
 void	excec(const char *cmd, char **envp)
 {
@@ -55,16 +56,17 @@ void	pipewrk(char *cmd, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
-	int	i;
-	int	fdi;
-	int	fdo;
+	int		i;
+	int		fdi;
+	int		fdo;
+	char	*line
 
 	if (argc < 5)
 		px_error("not enough arguments");
 	if (ft_strncmp(argv[1], "here_doc", 8))
 	{
 		i = 3;
-		prinf("YIPPIE");
+		line = get_next_line(0);
 	}
 	else
 	{
