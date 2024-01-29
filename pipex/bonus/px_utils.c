@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:20:09 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/24 11:48:49 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:22:34 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	px_error(char *in)
 {
-	ft_putstr_fd("pipex error: ", 2);
-	ft_putendl_fd(in, 2);
-	exit(-1);
+	perror(in);
+	exit(EXIT_FAILURE);
 }
 
 void	px_free(char **in)

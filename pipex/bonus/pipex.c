@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/27 13:13:16 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:31:19 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,49 @@ void	pipewrk(char *cmd, char **envp)
 	}
 }
 
+char*	heredoc(char *limiter)
+{
+	char *line;
+	char *out;
+	int flag;
+
+	out = ft_strdup("");
+	flag = 0;
+	while (flag != 1)
+	{
+		line = get_next_line(0);
+		if (ft_strncmp(limiter, line, ft_strlen(line) - 1) != 0)
+			out = ft_strjoin(out, line);
+		else
+			flag = 1;
+		free(line);
+	}
+	return (out);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int		i;
 	int		fdi;
 	int		fdo;
-	char	*line
 
 	if (argc < 5)
 		px_error("not enough arguments");
-	if (ft_strncmp(argv[1], "here_doc", 8))
+	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])))
 	{
 		i = 3;
-		line = get_next_line(0);
+		heredoc(argv[2]);
+		fdo = open(argv[argc - 2], O_CREAT | O_WRONLY | O_APPEND, S_IRUSR | S_IWUSR);
 	}
 	else
 	{
 		i = 2;
-		fdi = open(argv[1], 0);
-		fdo = open(argv[argc - 1], 1);
+		fdi = open(argv[1], O_RDONLY);
+		if (fdi < 0)
+			px_error("open");
+		fdo = open(argv[argc - 2], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+		if (fdo < 0)
+			px_error("problem reading file");
 		dup2(fdi, STDIN_FILENO);
 	}
 	while (i < argc - 3)
