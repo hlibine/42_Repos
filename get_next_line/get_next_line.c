@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:10:14 by hlibine           #+#    #+#             */
-/*   Updated: 2023/11/21 13:08:03 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/29 12:41:21 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,23 +124,3 @@ char	*get_next_line(int fd)
 	out = cleanup(&clean, i);
 	return (out);
 }
-
-/* int	main(void) {
-	const char *filename = "test_input.txt";
-	int fd = open(filename, O_RDONLY);
-	if (fd == -1) {
-		printf("Error opening file");
-		return 1;
-	}
-	char *line;
-	line = get_next_line(fd);
-	while (line) {
-		printf("New Line: %s", line);
-		// printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	printf("\n");
-	close(fd);
-	return 0;
-} */
