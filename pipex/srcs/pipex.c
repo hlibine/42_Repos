@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/27 14:38:59 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/30 10:29:00 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ void	child_ps(int *e_fd, char **argv, char **envp)
 	excec(argv[2], envp);
 }
 
-void	parent_ps(int *e_fd, char **argv, char **envp)
+void	parent_ps(int *e_fd, char **argv, char **envp, pid_t pid)
 {
 	int	fd;
 
+	waitpid(pid, NULL, 0);
 	fd = open(argv[4], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd < 0)
 		px_error("problem reading file");
@@ -70,6 +71,5 @@ int	main(int argc, char **argv, char **envp)
 		px_error("opening the fork");
 	if (!pid)
 		child_ps(fd, argv, envp);
-	waitpid(pid, NULL, 0);
-	parent_ps(fd, argv, envp);
+	parent_ps(fd, argv, envp, pid);
 }

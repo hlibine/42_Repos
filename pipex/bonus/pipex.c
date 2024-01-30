@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/29 17:31:19 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:26:48 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	pipewrk(char *cmd, char **envp)
 	}
 }
 
-char*	heredoc(char *limiter)
+int	heredoc(char *limiter)
 {
 	char *line;
 	char *out;
@@ -71,36 +71,43 @@ char*	heredoc(char *limiter)
 			flag = 1;
 		free(line);
 	}
-	return (out);
+	flag = open(".swap", O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	ft_putstr_fd(out, flag);
+	return (flag);
+}
+
+int	*filewrk(char **av, int ac)
+{
+	int	fdio[2]
+
+	fdio[0] = open(av[1], O_RDONLY);
+	if (fdio[0] < 0)
+		px_error("open");
+	fdio[1] = open(av[ac - 2], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	if (fdio[1] < 0)
+		px_error("problem reading file");
+	return (fdio);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	int		i;
-	int		fdi;
-	int		fdo;
+	int	i;
+	int	*fdio;
 
 	if (argc < 5)
 		px_error("not enough arguments");
+	i = 3;
 	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])))
-	{
-		i = 3;
-		heredoc(argv[2]);
-		fdo = open(argv[argc - 2], O_CREAT | O_WRONLY | O_APPEND, S_IRUSR | S_IWUSR);
-	}
+		dup2(heredoc(argv[2]), STDIN_FILENO);
 	else
 	{
 		i = 2;
-		fdi = open(argv[1], O_RDONLY);
-		if (fdi < 0)
-			px_error("open");
-		fdo = open(argv[argc - 2], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
-		if (fdo < 0)
-			px_error("problem reading file");
-		dup2(fdi, STDIN_FILENO);
+		fdio = filewrk(argv, argc);
+		dup2(fdio[0], STDIN_FILENO);
 	}
 	while (i < argc - 3)
 		pipewrk(argv[i++], envp);
+	dup2(fdio[1], STDOUT_FILENO);
 	excec(argv[argc - 2], envp);
 	return (0);
 }
