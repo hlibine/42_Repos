@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/30 13:55:53 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/30 14:06:26 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	pipewrk(char *cmd, char **envp)
 	pid_t	pid;
 	int		fd[2];
 
-	if(pipe(fd) == -1)
+	if (pipe(fd) == -1)
 		px_error("pipe error");
 	pid = fork();
 	if (pid == -1)
@@ -56,9 +56,9 @@ void	pipewrk(char *cmd, char **envp)
 
 int	heredoc(char *limiter)
 {
-	char *line;
-	char *out;
-	int flag;
+	char	*line;
+	char	*out;
+	int		flag;
 
 	out = ft_strdup("");
 	flag = 0;
@@ -112,7 +112,7 @@ int	main(int argc, char **argv, char **envp)
 		pipewrk(argv[i++], envp);
 	dup2(fdio[1], STDOUT_FILENO);
 	excec(argv[argc - 2], envp);
-	if(fdio)
+	if (fdio)
 	{
 		unlink(".swap");
 		free(fdio);
