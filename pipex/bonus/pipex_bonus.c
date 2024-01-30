@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.c                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/30 13:26:48 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:55:53 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	excec(const char *cmd, char **envp)
 	s_cmd = ft_split(cmd, ' ');
 	if (!s_cmd)
 		exit(EXIT_FAILURE);
-	path = px_getpath(s_cmd[0], envp);
+	path = bonus_px_getpath(s_cmd[0], envp);
 	if (execve(path, &s_cmd[0], envp) == -1)
 	{
 		ft_putstr_fd("pipex error: command not found: ", 2);
@@ -76,10 +76,13 @@ int	heredoc(char *limiter)
 	return (flag);
 }
 
-int	*filewrk(char **av, int ac)
+int	*px_filewrk(char **av, int ac)
 {
-	int	fdio[2]
+	int	*fdio;
 
+	fdio = malloc(2 * sizeof(int));
+	if (!fdio)
+		px_error("malloc error");
 	fdio[0] = open(av[1], O_RDONLY);
 	if (fdio[0] < 0)
 		px_error("open");
@@ -102,12 +105,17 @@ int	main(int argc, char **argv, char **envp)
 	else
 	{
 		i = 2;
-		fdio = filewrk(argv, argc);
+		fdio = px_filewrk(argv, argc);
 		dup2(fdio[0], STDIN_FILENO);
 	}
 	while (i < argc - 3)
 		pipewrk(argv[i++], envp);
 	dup2(fdio[1], STDOUT_FILENO);
 	excec(argv[argc - 2], envp);
+	if(fdio)
+	{
+		unlink(".swap");
+		free(fdio);
+	}
 	return (0);
 }

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   px_utils.c                                         :+:      :+:    :+:   */
+/*   px_utils_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:20:09 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/30 13:22:40 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/30 13:51:18 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void	px_error(char *in)
+void	bonus_px_error(char *in)
 {
 	perror(in);
 	unlink(".swap");
 	exit(EXIT_FAILURE);
 }
 
-void	px_free(char **in)
+void	bonus_px_free(char **in)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ void	px_free(char **in)
 	free(in);
 }
 
-char	*envpwrk(char *in, char **envp)
+char	*bonus_envpwrk(char *in, char **envp)
 {
 	int		i;
 	int		a;
@@ -53,7 +53,7 @@ char	*envpwrk(char *in, char **envp)
 	return(NULL);
 }
 
-char	*px_getpath(char *cmd, char **envp)
+char	*bonus_px_getpath(char *cmd, char **envp)
 {
 	int		i;
 	char	*exec;
@@ -63,7 +63,7 @@ char	*px_getpath(char *cmd, char **envp)
 
 	i = -1;
 	s_cmd = ft_split(cmd, ' ');
-	allpath = ft_split(envpwrk("PATH", envp), ':');
+	allpath = ft_split(bonus_envpwrk("PATH", envp), ':');
 	while (allpath[++i])
 	{
 		path_part = ft_strjoin(allpath[i], "/");
