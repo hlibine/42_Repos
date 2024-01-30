@@ -1,0 +1,15 @@
+[submodule "common_core/libft"]
+	path = common_core/libft
+	url = git@github.com:hlibine/Libft.git
+[submodule "common_core/ft_printf"]
+	path = common_core/ft_printf
+	url = git@github.com:hlibine/ft_printf.git
+[submodule "common_core/get_next_line"]
+	path = common_core/get_next_line
+	url = git@github.com:hlibine/get_next_line.git
+[submodule "common_core/Born2beroot"]
+	path = common_core/Born2beroot
+	url = git@github.com:hlibine/Born2beroot.git
+[submodule "common_core/push_swap"]
+	path = common_core/push_swap
+	url = git@github.com:hlibine/push_swap.git
