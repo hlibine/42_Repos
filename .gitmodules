@@ -13,3 +13,9 @@
 [submodule "common_core/push_swap"]
 	path = common_core/push_swap
 	url = git@github.com:hlibine/push_swap.git
+[submodule "common_core/pipex"]
+	path = common_core/pipex
+	url = git@github.com:hlibine/pipex.git
+[submodule "common_core/piscine"]
+	path = common_core/piscine
+	url = git@github.com:hlibine/piscine.git
