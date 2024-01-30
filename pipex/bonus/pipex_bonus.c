@@ -6,7 +6,7 @@
 /*   By: hlibine <hlibine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 23:52:06 by hlibine           #+#    #+#             */
-/*   Updated: 2024/01/30 14:06:26 by hlibine          ###   ########.fr       */
+/*   Updated: 2024/01/30 16:27:47 by hlibine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	pipewrk(char *cmd, char **envp)
 	int		fd[2];
 
 	if (pipe(fd) == -1)
-		px_error("pipe error");
+		px_error("Error: Failed to open the pipe");
 	pid = fork();
 	if (pid == -1)
 		px_error("fork error");
@@ -71,8 +71,11 @@ int	heredoc(char *limiter)
 			flag = 1;
 		free(line);
 	}
-	flag = open(".swap", O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	flag = open(".swap", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (flag < 0)
+		px_error("Error: Failed to creat swap file");
 	ft_putstr_fd(out, flag);
+	free(out);
 	return (flag);
 }
 
@@ -83,12 +86,12 @@ int	*px_filewrk(char **av, int ac)
 	fdio = malloc(2 * sizeof(int));
 	if (!fdio)
 		px_error("malloc error");
-	fdio[0] = open(av[1], O_RDONLY);
+	fdio[0] = open(av[1], O_RDONLY, 0644);
 	if (fdio[0] < 0)
-		px_error("open");
-	fdio[1] = open(av[ac - 2], O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+		px_error("Error: Failed to open input file");
+	fdio[1] = open(av[ac - 2], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fdio[1] < 0)
-		px_error("problem reading file");
+		px_error("Error: Failed to open output file");
 	return (fdio);
 }
 
@@ -98,7 +101,7 @@ int	main(int argc, char **argv, char **envp)
 	int	*fdio;
 
 	if (argc < 5)
-		px_error("not enough arguments");
+		px_error("Error : Not enough arguments");
 	i = 3;
 	if (ft_strncmp(argv[1], "here_doc", ft_strlen(argv[1])))
 		dup2(heredoc(argv[2]), STDIN_FILENO);
