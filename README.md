@@ -1,25 +1,32 @@
-# Welcome to My 42 Cursus Repository
+# My 42 Cursus Repository
 
-Welcome to my repository containing all the projects and exercises I've developed during my studies at 42.
+<img src="https://camo.githubusercontent.com/bceb89d6fd60ec75292970cfd163a9913a93d58152bc08817214fd925d3236e4/68747470733a2f2f34326c617573616e6e652e63682f77702d636f6e74656e742f75706c6f6164732f323032312f30312f34325f6c6f676f2e737667" width="40" alt="42 logo"> Welcome to my repository, a comprehensive archive of the projects I've done while at [42 Lausanne](https://42lausanne.ch/).
 
 ## Finished Projects
 
-Here's a list of projects that I have completed so far:
+I am proud to showcase my completed projects, each reflecting a significant learning milestone:
 
-- **Libft + Bonus**: My very first project at 42. It's a C library that reproduces the behavior of several standard C library functions, along with some additional useful functions.
+- **[libft + Bonus](https://github.com/hlibine/libft)**: The inception of my 42 path. A recreated standard C library with added utility functions to kickstart my projects.
 
-- **ft_printf**: A custom implementation of the C standard `printf` function. It handles various format specifiers and flags, providing formatted output to the standard output.
+- **[ft_printf](https://github.com/hlibine/ft_printf)**: A versatile and efficient re-implementation of the infamous `printf`, supporting various specifiers for diverse output formatting needs.
 
-- **get_next_line**: A function that allows reading a line from a file descriptor. Useful for parsing files line by line.
+- **[get_next_line](https://github.com/hlibine/get_next_line)**: Tailor-made function to extract and return lines from given file descriptors, enhancing file parsing capabilities line by line.
 
-- **Born2beRoot + Bonus**: A project aimed at making me familiar with system administration by setting up my own server, and following strict rules.
+- **[Born2beRoot + Bonus](https://github.com/hlibine/born2beroot)**: A deep dive into system administration, mandating the conception of a secure and well-structured server environment.
 
-- **PushSwap + Bonus**: This project requires making a sorting algorithm while only having a specific set of operations available to you, this algorithm has to be as optimized as possible (meaning the least amount of operations used)
+- **[PushSwap + Bonus](https://github.com/hlibine/push_swap)**: The epitome of algorithmic refinement, revolving around a constrained set of operations to sort data in minimal possible moves - featuring the innovative "algo turque".
 
-## Ongoing Projects
+## Current Endeavors
 
-- **pipex + Bonus**: A project that teaches basic UNIX operations and focuses on three main concepts: pipelines, child processes, and execution of commands.
+A glimpse into what's on my desk now:
 
-## Contact
+- **[pipex + Bonus](https://github.com/hlibine/pipex)**: My present challenge revolves around UNIX's pivotal concepts such as pipelines, process handling, and command executions - a simulation of the shell's pipe mechanism.
 
-Feel free to reach out if you have any questions, or comments, or if you find errors in my projects.
+## Connect with Me
+
+I am always open for discussions, queries, and collaborations. Feel free to connect:
+
+- **Email**: [hugo.libine@gmail.com](hugo.libine@gmail.com)
+- **LinkedIn**: [linkedin.com/in/hugo-libine/](https://www.linkedin.com/in/hugo-libine/)
+
+Your feedback and contributions to my projects are always appreciated!
