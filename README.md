@@ -28,6 +28,12 @@ Here you will find the project(s) that i an working on:
 
 - **[pipex + Bonus](https://github.com/hlibine/pipex)**: My present challenge revolves around UNIX's pivotal concepts such as pipelines, process handling, and command executions - a simulation of the shell's pipe mechanism.
 
+## Extras
+
+Here you will find any 42 related side projects i have made:
+
+- **[extended_ft](https://github.com/hlibine/extended_ft)**: This repo is my effort to expand and improve upon the libft project to include extra useful functions and other completed projects.
+
 ## Connect with Me
 
 I am always open for discussions, queries, and collaborations. Feel free to connect:
