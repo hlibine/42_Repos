@@ -10,7 +10,7 @@ Welcome to my repository, an archive of the projects I've done and am working on
 
 ## Finished Projects
 
-I am proud to showcase my completed projects which allow me to see just how far ive come:
+I am proud to showcase my completed projects which allow me to see just how far I've come:
 
 - **[libft + Bonus](https://github.com/hlibine/libft)**: My first project for 42. A recreated standard C library with added utility functions to kickstart my projects.
 
@@ -22,21 +22,23 @@ I am proud to showcase my completed projects which allow me to see just how far 
 
 - **[PushSwap + Bonus](https://github.com/hlibine/push_swap)**: The epitome of algorithmic refinement, revolving around a constrained set of operations to sort data in minimal possible moves - featuring the "Turk algorithm".
 
+- **[pipex + Bonus](https://github.com/hlibine/pipex)**: This project revolves around UNIX concepts such as pipelines, process handling, and command executions. This project was tough but I imagine that it will have been worth the effort when I get to minishell.
+
 ## Current Project
 
-Here you will find the project(s) that i an working on:
+Here you will find the project(s) that I am working on:
 
-- **[pipex + Bonus](https://github.com/hlibine/pipex)**: My present challenge revolves around UNIX's pivotal concepts such as pipelines, process handling, and command executions - a simulation of the shell's pipe mechanism.
+- **[so_long](https://github.com/hlibine/so_long)**: This project seems like it'll be a fun one, it's all about using minilibx to make a small 2D game. Ill get to learn about sprites and from what I've seen... it's gonna be structs galore. 
 
 ## Extras
 
-Here you will find any 42 related side projects i have made:
+Here you will find any 42 related side projects I have made:
 
 - **[extended_ft](https://github.com/hlibine/extended_ft)**: This repo is my effort to expand and improve upon the libft project to include extra useful functions and other completed projects.
 
 ## Connect with Me
 
-I am always open for discussions, queries, and collaborations. Feel free to connect:
+I am always open to discussions, queries, and collaborations. Feel free to connect:
 
 - **Email**: [hugo.libine@gmail.com](hugo.libine@gmail.com)
 - **LinkedIn**: [linkedin.com/in/hugo-libine/](https://www.linkedin.com/in/hugo-libine/)
