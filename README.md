@@ -24,11 +24,13 @@ I am proud to showcase my completed projects which allow me to see just how far 
 
 - **[pipex + Bonus](https://github.com/hlibine/pipex)**: This project revolves around UNIX concepts such as pipelines, process handling, and command executions. This project was tough but I imagine that it will have been worth the effort when I get to minishell.
 
+- **[so_long](https://github.com/hlibine/so_long)**: This project was fun as hell, didnt quite get to do all that I wanted but im quite happy with all ive achived. 
+
 ## Current Project
 
 Here you will find the project(s) that I am working on:
 
-- **[so_long](https://github.com/hlibine/so_long)**: This project seems like it'll be a fun one, it's all about using minilibx to make a small 2D game. Ill get to learn about sprites and from what I've seen... it's gonna be structs galore. 
+
 
 ## Extras
 
