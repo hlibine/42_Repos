@@ -30,7 +30,7 @@ I am proud to showcase my completed projects which allow me to see just how far 
 
 Here you will find the project(s) that I am working on:
 
-
+- **[Philosophers](https://github.com/hlibine/Philosophers)** From what ive seen this project is about spaghetti and threading, this should be intersting.
 
 ## Extras
 
