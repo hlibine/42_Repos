@@ -24,7 +24,7 @@ I am proud to showcase my completed projects which allow me to see just how far 
 
 - **[pipex + Bonus](https://github.com/hlibine/pipex)**: This project revolves around UNIX concepts such as pipelines, process handling, and command executions. This project was tough but I imagine that it will have been worth the effort when I get to minishell.
 
-- **[so_long](https://github.com/hlibine/so_long)**: This project was fun as hell, didnt quite get to do all that I wanted but im quite happy with all ive achived. 
+- **[so_long + Bonus](https://github.com/hlibine/so_long)**: This project was fun as hell, didnt quite get to do all that I wanted but im quite happy with all ive achived. 
 
 ## Current Project
 
